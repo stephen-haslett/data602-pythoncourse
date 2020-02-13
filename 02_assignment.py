@@ -73,13 +73,18 @@ def exercise04(more_temperatures, iot_sensor_points, a, b, c, d, e):
     # 6. Do a shallow copy of samples into copy_of_samples
     # 7. Organize samples in ascending order
 
-    temperatures = list(np.random.randint(-25, 25, size=10))
     samples = []
     copy_of_samples = []
 
     # ------ Place code below here \/ \/ \/ ------
-
-
+    temperatures = list(np.random.randint(-25, 25, size=10))
+    temperatures.extend(more_temperatures)
+    temperatures.extend(iot_sensor_points.values())
+    temperatures.extend([a, b, c, d, e])
+    temperatures.sort(reverse = True)
+    samples = temperatures[4::5]
+    copy_of_samples = samples[:]
+    samples.sort()
 
     # ------ Place code above here /\ /\ /\ ------
 
@@ -90,17 +95,20 @@ def exercise05(n):
     # This function will find n factorial using recursion (calling itself) and return the solution. For example exercise05(5) will return 120. No Python functions are to be used.
 
     # ------ Place code below here \/ \/ \/ ------
-
-    pass # Remove this line
-
+    if n == 1:
+        return 1
+    else:
+        return n * exercise05(n - 1)
     # ------ Place code above here /\ /\ /\ ------
 
-
 def exercise06(n):
-     # This function will receive an arbitrary list of numbers of arbitrary size and find the average of those numbers. The size of the list may vary. Find the method that requires the  least amount of code. Return back the length, sum of list and average of list
+     # This function will receive an arbitrary list of numbers of arbitrary size and find the average of those numbers. The size of the list may vary.
+     # Find the method that requires the  least amount of code. Return back the length, sum of list and average of list
 
     # ------ Place code below here \/ \/ \/ ------
-
+    length_n = len(n)
+    sum_n = sum(n)
+    average_n = sum_n / length_n
 
     # ------ Place code above here /\ /\ /\ ------
     return length_n, sum_n, average_n
@@ -110,13 +118,15 @@ def exercise07(n):
     # This function looks for duplicates in list n. If there is a duplicate True is returned. If there are no duplicates False is returned.
 
     # ------ Place code below here \/ \/ \/ ------
-
+    if len(n) != len(set(n)):
+        return True
+    else:
+        return False
 
     # ------ Place code above here /\ /\ /\ ------
 
 
     # ------ Place code below here \/ \/ \/ ------
-
 
 
 def exercise08(s):
@@ -125,7 +135,6 @@ def exercise08(s):
     return int_s, float_s
 
     # ------ Place code above here /\ /\ /\ ------
-
 
 
 def exercise09():
