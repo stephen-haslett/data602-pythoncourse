@@ -126,12 +126,10 @@ def exercise07(n):
     # ------ Place code above here /\ /\ /\ ------
 
 
-    # ------ Place code below here \/ \/ \/ ------
-
-
 def exercise08(s):
     # This function receives a string. The string should be casted to an int and then a float and returns each separately
-
+    int_s = int(s)
+    float_s = float(s)
     return int_s, float_s
 
     # ------ Place code above here /\ /\ /\ ------
@@ -142,15 +140,13 @@ def exercise09():
 
     dogs = []
     url = 'https://random.dog/woof.json'
-    dog_media = r.get(url=url)
-    print(str(dog_media.content))
-
     # ------ Place code below here \/ \/ \/ ------
-
-
+    limit = 11
+    while len(dogs) < limit:
+        dog_media = r.get(url=url)
+        dogs.append(str(dog_media.content))
 
     # ------ Place code above here /\ /\ /\ ------
-
     return dogs
 
 
@@ -160,9 +156,7 @@ def exercise10(sentence):
     reversed = ''
 
     # ------ Place code below here \/ \/ \/ ------
-
-
-
+    reversed = sentence[::-1].replace(' ', '_').swapcase()
     # ------ Place code above here /\ /\ /\ ------
     return reversed
 
