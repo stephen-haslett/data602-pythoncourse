@@ -24,6 +24,41 @@ class Box:
         self.__length = length
         self.__width = width
 
+    def render(self):
+        """prints out to the screen a box made with asterisks of length and width dimensions."""
+        print((self.length * '*' + '\n') * self.width, end = '')
+
+    def invert():
+        """switches length and width with each other."""
+
+    def get_area(self):
+        """Returns the area of the given box."""
+        area = self.width * self.height
+        return area
+
+    def get_perimeter(self):
+        """Returns the perimeter of the given box."""
+        perimeter = 2 * (self.width + self.height)
+        return perimeter
+
+    def double():
+
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    def print_dim(self):
+        print(f'Your box has a width of {self.width}, and a length of {self.length}.')
+
+
+    def get_dim():
+
+
+    def combine():
+
+
+    def get_hypot():
+
 # MangoDB class declaration below here
 
 
