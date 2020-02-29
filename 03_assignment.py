@@ -25,34 +25,37 @@ class Box:
         self.__width = width
 
     def render(self):
-        """prints out to the screen a box made with asterisks of length and width dimensions."""
+        """prints a box of asterisks constructed from passed length and width dimensions."""
         print((self.length * '*' + '\n') * self.width, end = '')
 
     def invert():
         """switches length and width with each other."""
 
     def get_area(self):
-        """Returns the area of the given box."""
+        """Returns the area of a box."""
         area = self.width * self.height
         return area
 
     def get_perimeter(self):
-        """Returns the perimeter of the given box."""
+        """Returns the perimeter of a box."""
         perimeter = 2 * (self.width + self.height)
         return perimeter
 
     def double():
 
-
     def __eq__(self, other):
-        return self.x == other.x and self.y == other.y
+        """Implements __eq__ to determine the equality of 2 boxes based on identical lengths and widths."""
+        return self.length == other.length and self.width == other.width
 
     def print_dim(self):
-        print(f'Your box has a width of {self.width}, and a length of {self.length}.')
+	"""Prints the length and width of a box."""
+        print(f'Box Width: {width}\nBox Length: {length}')
 
 
-    def get_dim():
-
+    def get_dim(self):
+        """Returns a tuple containing the length and width of a box."""
+        box_dimensions = (self.length, self.width)
+        return box_dimensions
 
     def combine():
 
