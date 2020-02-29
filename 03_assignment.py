@@ -20,17 +20,18 @@ import csv, json, math, pandas as pd, requests, unittest, uuid
 
 # Box class declaration below here.
 class Box:
+    import math
+
     def __init__(self, length, width):
         self.__length = length
         self.__width = width
 
     def render(self):
-        """prints a box of asterisks constructed from passed length and width dimensions."""
+        """prints a box of astericks constructed from the passed length and width dimensions."""
         print((self.length * '*' + '\n') * self.width, end = '')
 
     def invert(self):
         """Inverts length and width values and returns the result."""
-        "TODO: Should this return values??"""
         length = self.length
         width = self.width
         return length, width = width, length
@@ -62,9 +63,14 @@ class Box:
         return box_dimensions
 
     def combine():
+        """A method combine() that takes another box as an argument and increases the length and width by the dimensions of the box passed in"""
 
-
-    def get_hypot():
+    def get_hypot(self):
+        """Returns the length of the diagonal of a box."""
+        width = self.width
+        height = self.height
+        diagonal = round(math.sqrt(width ** 2 + height ** 2), 2)
+        return diagonal
 
 # MangoDB class declaration below here
 
