@@ -28,8 +28,12 @@ class Box:
         """prints a box of asterisks constructed from passed length and width dimensions."""
         print((self.length * '*' + '\n') * self.width, end = '')
 
-    def invert():
-        """switches length and width with each other."""
+    def invert(self):
+        """Inverts length and width values and returns the result."""
+        "TODO: Should this return values??"""
+        length = self.length
+        width = self.width
+        return length, width = width, length
 
     def get_area(self):
         """Returns the area of a box."""
