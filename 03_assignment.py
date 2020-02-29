@@ -20,7 +20,7 @@ import csv, json, math, pandas as pd, requests, unittest, uuid
 
 # Box class declaration below here.
 class Box:
-    import math
+    # @TODO: ADD CLASS DOCSTRING HERE!!!
 
     def __init__(self, length, width):
         self.__length = length
@@ -28,47 +28,50 @@ class Box:
 
     def render(self):
         """prints a box of astericks constructed from the passed length and width dimensions."""
-        print((self.length * '*' + '\n') * self.width, end = '')
+        print((self.__length * '*' + '\n') * self.__width, end = '')
 
     def invert(self):
         """Inverts length and width values and returns the result."""
-        length = self.length
-        width = self.width
-        return length, width = width, length
+        length = self.__length
+        width = self.__width
+        inverted = length, width = width, length
+        return inverted
 
     def get_area(self):
         """Returns the area of a box."""
-        area = self.width * self.height
+        area = self.__length * self.__width
         return area
 
     def get_perimeter(self):
         """Returns the perimeter of a box."""
-        perimeter = 2 * (self.width + self.height)
+        perimeter = 2 * (self.__length + self.__width)
         return perimeter
 
-    def double():
+    # TODO: DEFINE THIS METHOD!!!!
+    # def double():
 
     def __eq__(self, other):
         """Implements __eq__ to determine the equality of 2 boxes based on identical lengths and widths."""
-        return self.length == other.length and self.width == other.width
+        return self.__length == other.__length and self.__width == other.__width
 
     def print_dim(self):
-	"""Prints the length and width of a box."""
-        print(f'Box Width: {width}\nBox Length: {length}')
+        """Prints the width and length of a box."""
+        print(f'Box Length: {self.__length}\nBox Width: {self.__width}')
 
 
     def get_dim(self):
         """Returns a tuple containing the length and width of a box."""
-        box_dimensions = (self.length, self.width)
+        box_dimensions = (self.__length, self.__width)
         return box_dimensions
 
     def combine():
         """A method combine() that takes another box as an argument and increases the length and width by the dimensions of the box passed in"""
+        # TODO: FINSH THIS METHOD!!!
 
     def get_hypot(self):
         """Returns the length of the diagonal of a box."""
-        width = self.width
-        height = self.height
+        width = self.__width
+        height = self.__length
         diagonal = round(math.sqrt(width ** 2 + height ** 2), 2)
         return diagonal
 
@@ -112,7 +115,15 @@ def exercise01():
 '''
 
     # ------ Place code below here \/ \/ \/ ------
+    # Instantiate 3 box objects from the Box class.
+    box1 = Box(5, 10)
+    box2 = Box(3, 4)
+    box3 = box(5, 10)
 
+    # Print the dimensions of each box.
+    box1.print_dim()
+    box2.print_dim()
+    box3.print_dim()
 
 
     return box1, box2, box3
