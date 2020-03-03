@@ -48,7 +48,10 @@ class Box:
         return perimeter
 
     # TODO: DEFINE THIS METHOD!!!!
-    # def double():
+    def double(self):
+        """Doubles the size of the passed box. Hint: Pay attention to return value here."""
+        return self.get_perimeter
+
 
     def __eq__(self, other):
         """Implements __eq__ to determine the equality of 2 boxes based on identical lengths and widths."""
@@ -118,13 +121,18 @@ def exercise01():
     # Instantiate 3 box objects from the Box class.
     box1 = Box(5, 10)
     box2 = Box(3, 4)
-    box3 = box(5, 10)
+    box3 = Box(5, 10)
 
     # Print the dimensions of each box.
     box1.print_dim()
     box2.print_dim()
     box3.print_dim()
 
+    # Evaluate if box1 == box2.
+    print(True if box1 == box2 else False)
+
+    # Evaluate if box1 == box3.
+    print(True if box1 == box3 else False)
 
     return box1, box2, box3
 
