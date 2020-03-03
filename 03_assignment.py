@@ -47,11 +47,13 @@ class Box:
         perimeter = 2 * (self.__length + self.__width)
         return perimeter
 
-    # TODO: DEFINE THIS METHOD!!!!
     def double(self):
-        """Doubles the size of the passed box. Hint: Pay attention to return value here."""
-        return self.get_perimeter
+        """Doubles the size of a box."""
+        length = self.__length * 2
+        width = self.__width *2
 
+        doubled_box = length, width
+        return doubled_box
 
     def __eq__(self, other):
         """Implements __eq__ to determine the equality of 2 boxes based on identical lengths and widths."""
@@ -60,7 +62,6 @@ class Box:
     def print_dim(self):
         """Prints the width and length of a box."""
         print(f'Box Length: {self.__length}\nBox Width: {self.__width}')
-
 
     def get_dim(self):
         """Returns a tuple containing the length and width of a box."""
@@ -77,6 +78,7 @@ class Box:
         height = self.__length
         diagonal = round(math.sqrt(width ** 2 + height ** 2), 2)
         return diagonal
+
 
 # MangoDB class declaration below here
 
@@ -106,7 +108,7 @@ def exercise01():
         - A method get_hypot() that finds the length of the diagonal that cuts throught the middle
 
         In the function exercise01():
-        - Instantiate 3 boxes of dimensions 5,10 , 3,4 and 5,10 and assign to variables box1, box2 and box3 respectively 
+        - Instantiate 3 boxes of dimensions 5,10 , 3,4 and 5,10 and assign to variables box1, box2 and box3 respectively
         - Print dimension info for each using print_dim()
         - Evaluate if box1 == box2, and also evaluate if box1 == box3, print True or False to the screen accordingly
         - Combine box3 into box1 (i.e. box1.combine())
@@ -133,6 +135,11 @@ def exercise01():
 
     # Evaluate if box1 == box3.
     print(True if box1 == box3 else False)
+
+    # Combine box3 into box1.
+
+    # Double the size of box2.
+    box2.double()
 
     return box1, box2, box3
 
