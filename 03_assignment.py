@@ -50,7 +50,7 @@ class Box:
     def double(self):
         """Doubles the size of a box."""
         length = self.__length * 2
-        width = self.__width *2
+        width = self.__width * 2
 
         doubled_box = length, width
         return doubled_box
@@ -68,9 +68,12 @@ class Box:
         box_dimensions = (self.__length, self.__width)
         return box_dimensions
 
-    def combine():
-        """A method combine() that takes another box as an argument and increases the length and width by the dimensions of the box passed in"""
-        # TODO: FINSH THIS METHOD!!!
+    def combine(self, box):
+        """Increases the dimensions of a box by adding the dimensions of another box onto it."""
+        combined_length = self.__length + box.__length
+        combined_width = self.__width + box.__width
+        combined_box = combined_length, combined_width
+        return combined_box
 
     def get_hypot(self):
         """Returns the length of the diagonal of a box."""
@@ -137,9 +140,20 @@ def exercise01():
     print(True if box1 == box3 else False)
 
     # Combine box3 into box1.
+    box1.combine(box3)
 
     # Double the size of box2.
     box2.double()
+
+    # Combine box2 into box1.
+    box1.combine(box2)
+
+    # Using a for loop, iterate through and print the tuple received from calling box2's get_dim().
+    for i in box2.get_dim():
+        print(i)
+
+    # Find the size of the diagonal of box2.
+    box2.get_hypot()
 
     return box1, box2, box3
 
@@ -236,7 +250,7 @@ class TestAssignment3(unittest.TestCase):
         self.assertEqual(b3.get_length(),5)
         self.assertEqual(b2.get_hypot(),10)
         self.assertEqual(b1.double().get_length(),32)
-        self.assertEqual(b1.double().get_width(),112)
+        self.assertEqual(b1.double().get_width(),56)
         self.assertTrue(6 in b2.get_dim())
         self.assertTrue(8 in b2.get_dim())
         self.assertTrue(b2.combine(Box(1,1))==Box(7,9))
