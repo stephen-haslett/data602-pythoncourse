@@ -26,6 +26,12 @@ class Box:
         self.__length = length
         self.__width = width
 
+    def get_length(self):
+        return self.__length
+
+    def get_width(self):
+        return self.__width
+
     def render(self):
         """prints a box of astericks constructed from the passed length and width dimensions."""
         print((self.__length * '*' + '\n') * self.__width, end = '')
@@ -48,6 +54,8 @@ class Box:
         return perimeter
 
     def double(self):
+        # TODO: MAKE SURE THIS IS THE CORRECT CALCULATION AS PER THIS COMMENT
+        # The first question is simply to confirm that when you ask for doubling the size of the Box, you actually mean doubling the sides of the Box, which results in an area four times that of the original Box.
         """Doubles the size of a box."""
         length = self.__length * 2
         width = self.__width * 2
@@ -84,6 +92,7 @@ class Box:
 
 
 # MangoDB class declaration below here
+class MangoDB:
 
 
 # ------ Create your classes here /\ /\ /\ ------
@@ -234,8 +243,12 @@ def exercise03():
     '''
 
     # ------ Place code below here \/ \/ \/ ------
+    # Open the "avocado.csv" file and print its contents to the screen.
+    with open('avocado.csv') as csv_file:
+        reader = csv.reader(csv_file, delimiter = ',')
 
-
+        for row in reader:
+            print(row)
     # ------ Place code above here /\ /\ /\ ------
 
 class TestAssignment3(unittest.TestCase):
