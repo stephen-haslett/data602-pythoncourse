@@ -94,10 +94,34 @@ class Box:
 # MangoDB class declaration below here
 class MangoDB:
 
+    def display_all_collections(self):
+
+
+    def add_collection(self):
+
+
+    def update_collection(self):
+
+
+    def remove_collection(self):
+
+
+    def list_collections(self):
+
+
+    def get_collection_size(self):
+
+
+    def to_json(self):
+
+
+    def wipe(self):
+
+
+    def get_collection_names(self):
+
 
 # ------ Create your classes here /\ /\ /\ ------
-
-
 
 
 
