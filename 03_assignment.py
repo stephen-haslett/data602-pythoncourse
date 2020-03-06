@@ -93,9 +93,14 @@ class Box:
 
 # MangoDB class declaration below here
 class MangoDB:
+    def __init__(self, collection_name = 'default', collection_data = {'version': 1.0, 'db': 'mangodb', 'uuid': uuid.uuid4()}):
+        collection = {}
+        collection[collection_name] = collection_data
+        self.__collection = collection
 
     def display_all_collections(self):
-
+        for collection_item in self.__collection:
+            print(collection_item)
 
     def add_collection(self):
 
