@@ -93,22 +93,28 @@ class Box:
 
 # MangoDB class declaration below here
 class MangoDB:
+    # Generate a random uuid using the uuid4() method.
     uuid = uuid.uuid4()
+
     def __init__(self, collection_name = 'default', collection_data = {'version': 1.0, 'db': 'mangodb', 'uuid': uuid}):
         collection = {}
         collection[collection_name] = collection_data
+        self.__collection_name = collection_name
         self.__collection = collection
 
     def display_all_collections(self):
+        """Displays all the collections contained within the root dictionary."""
         for name, data in self.__collection.items():
             print("\ncollection:", name)
             for key in data:
                 print("\t", key + ':', data[key])
 
-    def add_collection(self):
-        pass
+    def add_collection(self, collection_name, collection_values = {}):
+        """Adds a new collection to the root dictionary."""
+         self.__collection[collection_name] = collection_values
 
     def update_collection(self):
+	"""Updates an existing collection within the root dictionary."""
         pass
 
     def remove_collection(self):
