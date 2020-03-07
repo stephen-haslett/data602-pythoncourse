@@ -103,22 +103,32 @@ class MangoDB:
         self.__collection = collection
 
     def display_all_collections(self):
-        """Displays all the collections contained within the root dictionary."""
+        """Displays all collections contained within the root dictionary."""
         for name, data in self.__collection.items():
             print("\ncollection:", name)
             for key in data:
                 print("\t", key + ':', data[key])
 
     def add_collection(self, collection_name, collection_values = {}):
-        """Adds a new collection to the root dictionary."""
-         self.__collection[collection_name] = collection_values
+        """Adds a new collection to the root dictionary if it does not already exist."""
+        if collection_name not in self.__collection:
+            self.__collection[collection_name] = collection_values
+        else:
+            print('Sorry the collection ' + collection_name + ' already exists, try updating it instead.')
 
-    def update_collection(self):
-	"""Updates an existing collection within the root dictionary."""
-        pass
+    def update_collection(self, collection_name, new_collection_values = {}):
+        """Updates an existing collection within the root dictionary if it exists, otherwise complains."""
+        if collection_name in self.__collection:
+            self.__collection[collection_name] = new_collection_values
+        else:
+            print('Collection ' + collection_name + ' does not exist :( - please add it before trying to update it.')
 
     def remove_collection(self):
-        pass
+        """Removes a collection from the root dictionary if it exists, otherwise issues an error message."""
+        if collection_name in self.__collection:
+            self.__collection.pop(collection_name)
+        else:
+            print('Cannot remove a collection that does not exist.')
 
     def list_collections(self):
         pass
