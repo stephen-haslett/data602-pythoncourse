@@ -120,10 +120,11 @@ class MangoDB:
     def add_collection(self, collection_name, collection_values = {}):
         """Adds a new collection to the root dictionary if it does not already exist."""
         if collection_name not in self.__collection:
-            self.__collection[collection_name] = collection_values
             # Check if the collection values are a list. If so, convert the list to a dictionary.
             if isinstance(collection_values, list):
-                collection_values = { i : collection_values[i] for i in range(0, len(collection_values))}
+                collection_values = {i : collection_values[i] for i in range(0, len(collection_values))}
+
+            self.__collection[collection_name] = collection_values
         else:
             print('Sorry the collection ' + collection_name + ' already exists, try updating it instead.')
 
