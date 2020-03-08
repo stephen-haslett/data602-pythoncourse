@@ -151,7 +151,11 @@ class MangoDB:
         pass
 
     def get_collection_names(self):
-        pass
+        """Returns a list of collection names."""
+        collection_names = []
+        for name in self.__collection.keys():
+            collection_names.append(name)
+        return collection_names
 
 # ------ Create your classes here /\ /\ /\ ------
 
