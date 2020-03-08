@@ -142,7 +142,11 @@ class MangoDB:
             print('Cannot remove a collection that does not exist.')
 
     def list_collections(self):
-        pass
+        """Displays a list of all collections."""
+        collection_list = self.__collection.items()
+        collection_list = []
+        [collection_list.extend([item, value]) for item, value in self.__collection.items()]
+        print(collection_list)
 
     def get_collection_size(self, collection_name):
         """finds the number of key/value pairs in a given collection."""
