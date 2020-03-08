@@ -107,12 +107,15 @@ class MangoDB:
         for name, data in self.__collection.items():
             print("\ncollection:", name)
             for key in data:
-                print("\t", key + ':', data[key])
+                print("\t {} : {}".format(key, data[key]))
 
     def add_collection(self, collection_name, collection_values = {}):
         """Adds a new collection to the root dictionary if it does not already exist."""
         if collection_name not in self.__collection:
             self.__collection[collection_name] = collection_values
+            # Check if the collection values are a list. If so, convert the list to a dictionary.
+            if isinstance(collection_values, list):
+                collection_values = { i : collection_values[i] for i in range(0, len(collection_values))}
         else:
             print('Sorry the collection ' + collection_name + ' already exists, try updating it instead.')
 
@@ -123,7 +126,7 @@ class MangoDB:
         else:
             print('Collection ' + collection_name + ' does not exist :( - please add it before trying to update it.')
 
-    def remove_collection(self):
+    def remove_collection(self, collection_name):
         """Removes a collection from the root dictionary if it exists, otherwise issues an error message."""
         if collection_name in self.__collection:
             self.__collection.pop(collection_name)
@@ -133,8 +136,13 @@ class MangoDB:
     def list_collections(self):
         pass
 
-    def get_collection_size(self):
-        pass
+    def get_collection_size(self, collection_name):
+        """finds the number of key/value pairs in a given collection."""
+        item_count = 0
+        for item in self.__collection[collection_name]:
+            item_count = item_count + 1
+
+        print(item_count)
 
     def to_json(self):
         pass
