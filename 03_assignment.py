@@ -162,7 +162,10 @@ class MangoDB:
         return json_output
 
     def wipe(self):
-        pass
+        """Deletes all collections within the root dictionary and resets the default collection."""
+        self.__collection.clear()
+        self.__default_collection_data = {'version': 1.0, 'db': 'mangodb', 'uuid': uuid.uuid4()}
+        self.__collection['default'] = self.__default_collection_data
 
     def get_collection_names(self):
         """Returns a list of collection names."""
