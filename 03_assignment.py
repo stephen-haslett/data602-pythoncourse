@@ -306,7 +306,26 @@ def exercise02():
     test_scores = [99,89,88,75,66,92,75,94,88,87,88,68,52]
 
     # ------ Place code below here \/ \/ \/ ------
+    # Create an instance of MangoDB.
+    mango_db = MangoDB()
 
+    # Add a collection called testscores, and insert the test_scores list into the testscores collection.
+    mango_db.add_collection('testscores', test_scores)
+
+    # Display the size of the testscores collection.
+    mango_db.get_collection_size('testscores')
+
+    # Display a list of collections.
+    mango_db.list_collections()
+
+    # Display the db's UUID.
+    print(mango_db.uuid)
+
+    # Wipe the database clean.
+    mango_db.wipe()
+
+    # Display the db's UUID again, confirming it has changed.
+    print(mango_db.uuid)
     # ------ Place code above here /\ /\ /\ ------
 
 
