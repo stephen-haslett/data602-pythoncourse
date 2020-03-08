@@ -15,8 +15,16 @@ Assignment #3
 
 '''
 import csv, json, math, pandas as pd, requests, unittest, uuid
+from uuid import UUID
 
 # ------ Create your classes here \/ \/ \/ ------
+class UUIDEncoder(json.JSONEncoder):
+    """Class that takes care of converting UUID values into a JSON friendly format."""
+    """source: https://stackoverflow.com/questions/36588126/uuid-is-not-json-serializable."""
+    def default(self, obj):
+        if isinstance(obj, UUID):
+            return obj.hex
+        return json.JSONEncoder.default(self, obj)
 
 # Box class declaration below here.
 class Box:
@@ -144,8 +152,10 @@ class MangoDB:
 
         print(item_count)
 
-    def to_json(self):
-        pass
+    def to_json(self, collection_name):
+        """Converts a collection to a JSON string."""
+        json_output = json.dumps(self.__collection[collection_name], cls = UUIDEncoder)
+        return json_output
 
     def wipe(self):
         pass
