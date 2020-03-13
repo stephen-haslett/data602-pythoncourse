@@ -99,12 +99,9 @@ class Box:
         return diagonal
 
 
-# MangoDB class declaration below here
+# MangoDB class declaration below here.
 class MangoDB:
-    # Generate a random uuid using the uuid4() method.
-    uuid = uuid.uuid4()
-
-    def __init__(self, collection_name = 'default', collection_data = {'version': 1.0, 'db': 'mangodb', 'uuid': uuid}):
+    def __init__(self, collection_name = 'default', collection_data = {'version': 1.0, 'db': 'mangodb', 'uuid': uuid.uuid4()}):
         collection = {}
         collection[collection_name] = collection_data
         self.__collection_name = collection_name
@@ -315,17 +312,14 @@ def exercise02():
     # Display the size of the testscores collection.
     mango_db.get_collection_size('testscores')
 
-    # Display a list of collections.
+    # Display a list of collections (this step includes displaying the db's UUID).
     mango_db.list_collections()
-
-    # Display the db's UUID.
-    print(mango_db.uuid)
 
     # Wipe the database clean.
     mango_db.wipe()
 
     # Display the db's UUID again, confirming it has changed.
-    print(mango_db.uuid)
+    mango_db.list_collections()
     # ------ Place code above here /\ /\ /\ ------
 
 
