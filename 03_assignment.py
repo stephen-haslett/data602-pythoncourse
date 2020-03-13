@@ -28,8 +28,6 @@ class UUIDEncoder(json.JSONEncoder):
 
 # Box class declaration below here.
 class Box:
-    # @TODO: ADD CLASS DOCSTRING HERE!!!
-
     def __init__(self, length, width):
         self.__length = length
         self.__width = width
@@ -62,8 +60,6 @@ class Box:
         return perimeter
 
     def double(self):
-        # TODO: MAKE SURE THIS IS THE CORRECT CALCULATION AS PER THIS COMMENT
-        # The first question is simply to confirm that when you ask for doubling the size of the Box, you actually mean doubling the sides of the Box, which results in an area four times that of the original Box.
         """Doubles the size of a box."""
         length = self.__length * 2
         width = self.__width * 2
@@ -128,7 +124,7 @@ class MangoDB:
     def update_collection(self, collection_name, new_collection_values = {}):
         """Updates an existing collection within the root dictionary if it exists, otherwise complains."""
         if collection_name in self.__collection:
-            self.__collection[collection_name] = new_collection_values
+            self.__collection[collection_name].update(new_collection_values)
         else:
             print('Collection ' + collection_name + ' does not exist :( - please add it before trying to update it.')
 
@@ -152,7 +148,7 @@ class MangoDB:
         for item in self.__collection[collection_name]:
             item_count = item_count + 1
 
-        print(item_count)
+        return item_count
 
     def to_json(self, collection_name):
         """Converts a collection to a JSON string."""
