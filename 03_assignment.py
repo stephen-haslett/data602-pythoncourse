@@ -15,14 +15,13 @@ Assignment #3
 
 '''
 import csv, json, math, pandas as pd, requests, unittest, uuid
-from uuid import UUID
 
 # ------ Create your classes here \/ \/ \/ ------
 class UUIDEncoder(json.JSONEncoder):
     """Class that takes care of converting UUID values into a JSON friendly format."""
     """source: https://stackoverflow.com/questions/36588126/uuid-is-not-json-serializable."""
     def default(self, obj):
-        if isinstance(obj, UUID):
+        if isinstance(obj, uuid.UUID):
             return obj.hex
         return json.JSONEncoder.default(self, obj)
 
@@ -97,7 +96,7 @@ class Box:
 
 # MangoDB class declaration below here.
 class MangoDB:
-    def __init__(self, collection_name = 'default', collection_data = {'version': 1.0, 'db': 'mangodb', 'uuid': uuid.uuid4()}):
+    def __init__(self, collection_name = 'default', collection_data = {'version': 1.0, 'db': 'mangodb', 'uuid': str(uuid.uuid4())}):
         collection = {}
         collection[collection_name] = collection_data
         self.__collection_name = collection_name
@@ -158,7 +157,7 @@ class MangoDB:
     def wipe(self):
         """Deletes all collections within the root dictionary and resets the default collection."""
         self.__collection.clear()
-        self.__default_collection_data = {'version': 1.0, 'db': 'mangodb', 'uuid': uuid.uuid4()}
+        self.__default_collection_data = {'version': 1.0, 'db': 'mangodb', 'uuid': str(uuid.uuid4())}
         self.__collection['default'] = self.__default_collection_data
 
     def get_collection_names(self):
