@@ -60,11 +60,8 @@ class Box:
 
     def double(self):
         """Doubles the size of a box."""
-        length = self.__length * 2
-        width = self.__width * 2
-
-        doubled_box = length, width
-        return doubled_box
+        self.__width = self.__width * 2
+        return self
 
     def __eq__(self, other):
         """Implements __eq__ to determine the equality of 2 boxes based on identical lengths and widths."""
@@ -81,10 +78,9 @@ class Box:
 
     def combine(self, box):
         """Increases the dimensions of a box by adding the dimensions of another box onto it."""
-        combined_length = self.__length + box.__length
-        combined_width = self.__width + box.__width
-        combined_box = combined_length, combined_width
-        return combined_box
+        self.__width += box.get_width()
+        self.__length += box.get_length()
+        return self
 
     def get_hypot(self):
         """Returns the length of the diagonal of a box."""
