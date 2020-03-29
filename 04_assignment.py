@@ -99,17 +99,22 @@ import unittest
 import uuid
 
 class PandasChain:
-    # 5 pts - Complete this constructor
+    # 5 pts - Complete this constructor.
     def __init__(self, name):
-        self.__name = # Convert name to upper case and store it here
-        self.__chain = # Create an empty list
+        # Convert name to upper case and store it here.
+        self.__name = name.upper()
+        # Create an empty list.
+        self.__chain = []
         self.__id = hashlib.sha256(str(str(uuid.uuid4())+self.__name+str(dt.datetime.now())).encode('utf-8')).hexdigest()
-        # Create a sequence ID and set to zero
-        self.__prev_hash = # Set to None
-        self.__current_block = # Create a new Block
-        print(self.__name,'PandasChain created with ID',self.__id,'chain started.')
+        # Create a sequence ID and set to zero.
+        self.__sequence_id = 0
+        # Set to None.
+        self.__prev_hash = None
+        # Create a new Block.
+        self.__current_block = Block(self.__sequence_id, self.__prev_hash)
+        print(self.__name, 'PandasChain created with ID', self.__id, 'chain started.')
 
-    # 5 pts - This method should loop through all committed and uncommitted blocks and display all transactions in them
+    # 5 pts - This method should loop through all committed and uncommitted blocks and display all transactions in them.
     def display_chain(self):
         pass
 
