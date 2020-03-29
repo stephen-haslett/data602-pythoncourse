@@ -107,29 +107,34 @@ class PandasChain:
         self.__chain = []
         self.__id = hashlib.sha256(str(str(uuid.uuid4())+self.__name+str(dt.datetime.now())).encode('utf-8')).hexdigest()
         # Create a sequence ID and set to zero.
-        self.__sequence_id = 0
+        self.__seq_id = 0
         # Set to None.
         self.__prev_hash = None
         # Create a new Block.
-        self.__current_block = Block(self.__sequence_id, self.__prev_hash)
+        self.__current_block = Block(self.__seq_id, self.__prev_hash)
         print(self.__name, 'PandasChain created with ID', self.__id, 'chain started.')
 
     # 5 pts - This method should loop through all committed and uncommitted blocks and display all transactions in them.
     def display_chain(self):
-        pass
+        # TODO: CHECK IF THIS CONDITION CAUSES ISSUES!!!
+        if self.__chain:
+            for block in self.__chain:
+                block.display_transactions()
+
+            self.__current_block.display_transactions()
 
     # This method accepts a new transaction and adds it to current block if block is not full.
     # If block is full, it will delegate the committing and creation of a new current block.
-    def add_transaction(self,s,r,v):
+    def add_transaction(self, s, r, v):
         if self.__current_block.get_size() >= 10:
             self.__commit_block(self.__current_block)
-        self.__current_block.add_transaction(s,r,v)
+        self.__current_block.add_transaction(s, r, v)
 
     # 10 pts - This method is called by add_transaction if a block is full (i.e 10 or more transactions).
     # It is private and therefore not public accessible. It will change the block status to committed, obtain the merkle
     # root hash, generate and set the block's hash, set the prev_hash to the previous block's hash, append this block
     # to the chain list, increment the seq_id and create a new block as the current block
-    def __commit_block(self,block):
+    def __commit_block(self, block):
         # Add code here
         block_hash = # Create block hash
         # Add code here
@@ -139,7 +144,9 @@ class PandasChain:
     # You'll display the sequence Id, status, block hash, previous block's hash, merkle hash and total number (count)
     # of transactions in the block
     def display_block_headers(self):
-        pass
+        for block in self.__chain():
+            block.display_header()
+        self.__current_block.display_header()
 
     # 5 pts - return int total number of blocks in this chain (committed and uncommitted blocks combined)
     def get_number_of_blocks(self):
@@ -150,20 +157,29 @@ class PandasChain:
         pass
 
 class Block:
-    # 5 pts for constructor
-    def __init__(self,seq_id,prev_hash):
-        self.__seq_id = # Set to what's passed in from constructor
-        self.__prev_hash = # From constructor
+    # 5 pts for constructor.
+    def __init__(self, seq_id, prev_hash):
+        # Set to what's passed in from constructor.
+        self.__seq_id = seq_id
+        # From constructor.
+        self.__prev_hash = prev_hash
         self.__col_names = ['Timestamp','Sender','Receiver','Value','TxHash']
-        self.__transactions = # Create a new blank DataFrame with set headers
-        self.__status = # Initial status. This will be a string.
+        # Create a new blank DataFrame with set headers.
+        self.__transactions = pd.DataFrame(columns = self.__col_names)
+        # Initial status. This will be a string.
+        self.__status = 'UNCOMMITTED'
         self.__block_hash = None
         self.__merkle_tx_hash = None
 
     #5 pts -  Display on a single line the metadata of this block. You'll display the sequence Id, status,
-    # block hash, previous block's hash, merkle hash and number of transactions in the block
+    # block hash, previous block's hash, merkle hash and number of transactions in the block.
     def display_header(self):
-        pass
+        print(f'Sequence ID: {self.__seq_id}\n'
+               'Status: {self.__status}\n'
+               'Block Hash: {self.__block_hash}\n'
+               'Previous Block Hash: {self.__prev_hash\n'
+               'Merkle Hash: {self.__merkle_tx_hash\n'
+               'Number of Transactions" {len(self.__transactions)}')
 
     # 10 pts - This is the interface for how transactions are added
     def add_transaction(self,s,r,v):
@@ -174,7 +190,7 @@ class Block:
 
     # 10 pts -Print all transactions contained by this block
     def display_transactions(self):
-        pass
+        print(self.__transactions)
 
     # 5 pts- Return the number of transactions contained by this block
     def get_size(self):
