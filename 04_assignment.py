@@ -135,7 +135,9 @@ class PandasChain:
     # root hash, generate and set the block's hash, set the prev_hash to the previous block's hash, append this block
     # to the chain list, increment the seq_id and create a new block as the current block.
     def __commit_block(self, block):
-        # Add code here
+        # Add code here.
+        self.__block = block
+        self.__block.set_status('COMMMITTED')
         block_hash = # Create block hash
         # Add code here
         print('Block committed')
@@ -216,9 +218,13 @@ class Block:
 
     # 10 pts - Return and calculate merkle hash by taking all transaction hashes, concatenate them into one string and
     # hash that string producing a "merkle root" - Note, this is not how merkle tries work but is instructive
-    # and indicative in terms of the intent and purpose of merkle tries
+    # and indicative in terms of the intent and purpose of merkle tries.
     def get_simple_merkle_root(self):
-        pass
+        trans_hashes = ''
+        for hash in self.__transactions['Hash']:
+            trans_hashes += hash
+        self.__merkle_tx_hash = hashlib.sha256(trans_hashes.encode('utf-8')).hexdigest()
+        return self.__merkle_tx_hash
 
     def get_values(self):
         # TODO: SHOULD WE PRINT OR RETURN HERE?
