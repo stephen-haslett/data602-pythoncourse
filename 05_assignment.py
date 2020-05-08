@@ -58,7 +58,7 @@ def exercise01():
     '''
 
     # ------ Place code below here \/ \/ \/ ------
-    df_first_five_rows = pd.DataFrame(iris.data, columns=iris.feature_names).head()
+    df_first_five_rows = pd.DataFrame(iris.data, columns = iris.feature_names).head()
     target_names = iris.target_names.tolist()
     # ------ Place code above here /\ /\ /\ ------
 
@@ -137,8 +137,8 @@ def exercise05():
     '''
 
     # ------ Place code below here \/ \/ \/ ------
-
-
+    boston_data = pd.DataFrame(boston.data, columns = boston.feature_names)
+    boston_target_values = pd.DataFrame(boston.target)
     # ------ Place code above here /\ /\ /\ ------
 
 
