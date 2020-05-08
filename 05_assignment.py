@@ -98,8 +98,13 @@ def exercise03(neighbors,split):
 
 
     # ------ Place code below here \/ \/ \/ ------
+    X,y = iris.data, iris.target
+    X_train, X_test, Y_train, Y_test = tts(X,y, test_size = split, random_state = random_state, stratify = y)
 
+    knn = KNN(n_neighbors = neighbors)
+    knn.fit(X_train, Y_train)
 
+    knn_score = knn.score(X_test, Y_test)
     # ------ Place code above here /\ /\ /\ ------
 
 
