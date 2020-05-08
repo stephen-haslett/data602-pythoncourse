@@ -74,8 +74,11 @@ def exercise02(new_observations):
     '''
 
     # ------ Place code below here \/ \/ \/ ------
+    X,y = iris.data, iris.target
+    knn = KNN(n_neighbors = 5)
 
-
+    predicted_target_names = knn.fit(X,y).predict(new_observations)
+    iris_predictions = iris.target_names[predicted_target_names]
     # ------ Place code above here /\ /\ /\ ------
 
 
