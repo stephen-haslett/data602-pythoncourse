@@ -139,8 +139,8 @@ def exercise05():
     # ------ Place code below here \/ \/ \/ ------
     boston_data = pd.DataFrame(boston.data, columns = boston.feature_names)
     boston_target_values = pd.DataFrame(boston.target)
-    average_age = boston_data['AGE'].mean()
-    average_medv = boston_target_values.mean()
+    average_age = np.mean(boston_data['AGE'])
+    average_medv = np.mean(boston.target)
     medv_as_numpy_values = np.array(boston_target_values)
     # ------ Place code above here /\ /\ /\ ------
 
@@ -190,15 +190,17 @@ def exercise07():
     x = np.array(data['PTRATIO']).reshape(-1, 1)
     y = np.array(data['MEDV']).reshape(-1, 1)
 
-    prediction_space = np.linspace(x.min(), x.max(), 100)
-    reg_model = lm.LinearRegression()
-    reg_model.fit(x, y)
-    Y_pred = reg_model.predict(x)
+    prediction_space = np.linspace(min(x), max(x)).reshape(-1, 1)
+    regression_model = lm.LinearRegression()
+    regression_model.fit(x, y)
+    Y_pred = regression_model.predict(prediction_space)
     plt.scatter(x, y)
     plt.xlabel('Pupil-teacher ratio')
     plt.ylabel('Median value of homes')
-    plt.plot(x, Y_pred, color='red')
+    plt.plot(prediction_space, Y_pred, color='red')
     plt.show()
+
+    reg_model = Y_pred
     # ------ Place code above here /\ /\ /\ ------
 
     return reg_model, prediction_space
