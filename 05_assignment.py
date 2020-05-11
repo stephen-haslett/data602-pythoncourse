@@ -139,6 +139,9 @@ def exercise05():
     # ------ Place code below here \/ \/ \/ ------
     boston_data = pd.DataFrame(boston.data, columns = boston.feature_names)
     boston_target_values = pd.DataFrame(boston.target)
+    average_age = boston_data['AGE'].mean()
+    average_medv = boston_target_values.mean()
+    medv_as_numpy_values = np.array(boston_target_values)
     # ------ Place code above here /\ /\ /\ ------
 
 
