@@ -182,8 +182,20 @@ def exercise07():
     '''
 
     # ------ Place code below here \/ \/ \/ ------
+    data = pd.DataFrame(boston.data, columns=boston.feature_names)
+    data['MEDV'] = boston.target
+    x = np.array(data['PTRATIO']).reshape(-1, 1)
+    y = np.array(data['MEDV']).reshape(-1, 1)
 
-
+    prediction_space = np.linspace(x.min(), x.max(), 100)
+    reg_model = lm.LinearRegression()
+    reg_model.fit(x, y)
+    Y_pred = reg_model.predict(x)
+    plt.scatter(x, y)
+    plt.xlabel('Pupil-teacher ratio')
+    plt.ylabel('Median value of homes')
+    plt.plot(x, Y_pred, color='red')
+    plt.show()
     # ------ Place code above here /\ /\ /\ ------
 
     return reg_model, prediction_space
