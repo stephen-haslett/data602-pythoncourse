@@ -154,8 +154,17 @@ def exercise06():
     '''
 
     # ------ Place code below here \/ \/ \/ ------
+    data = pd.DataFrame(boston.data, columns=boston.feature_names)
+    data['MEDV'] = boston.target
+    x = data['PTRATIO']
+    y = data['MEDV']
 
+    plt.scatter(x, y)
+    plt.xlabel('Pupil-teacher ratio')
+    plt.ylabel('Median value of homes')
+    plt.show()
 
+    X_ptratio = np.array(data['PTRATIO'])
     # ------ Place code above here /\ /\ /\ ------
 
 
