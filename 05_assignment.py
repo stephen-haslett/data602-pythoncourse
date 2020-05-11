@@ -32,8 +32,6 @@ import unittest
 # import plotly library and enter credential info here
 import plotly as pl
 import chart_studio as cs
-
-
 # ------ Place code above here /\ /\ /\ ------
 
 
@@ -120,8 +118,38 @@ def exercise04():
     '''
 
     # ------ Place code below here \/ \/ \/ ------
+    import plotly.graph_objs as go
 
+    iris = ds.load_iris()
 
+    X,y = iris.data, iris.target
+    X_train, X_test, Y_train, Y_test = tts(X,y, test_size = .25, random_state = 21, stratify = y)
+    neighbors = np.arange(1, 30)
+    train_accuracy = np.empty(len(neighbors))
+    test_accuracy = np.empty(len(neighbors))
+
+    for i, k in enumerate(neighbors):
+        knn = KNN(n_neighbors=k)
+        knn.fit(X_train, Y_train)
+        train_accuracy[i] = knn.score(X_train, Y_train)
+        test_accuracy[i] = knn.score(X_test, Y_test)
+
+    test_performance = go.Scatter(
+        x = neighbors,
+        y = test_accuracy,
+        mode = 'lines+markers',
+        name = 'Testing Performance'
+    )
+
+    training_performance = go.Scatter(
+        x = neighbors,
+        y = train_accuracy,
+        mode = 'lines+markers',
+        name = 'Training Performance'
+    )
+
+    data = [test_performance, training_performance]
+    plotly_overfit_underfit_curve_url = pl.offline.plot(data, filename = '~/exercise-four.html')
     # ------ Place code above here /\ /\ /\ ------
 
 
